@@ -1,8 +1,24 @@
 import asyncio
+import random
 
-async def main():
+# Example of Coroutine function
+
+async def main(): 
     print("Hello ...")
     await asyncio.sleep(1)
     print('... World.')
 
 asyncio.run(main())
+
+
+# Example of Coroutine object
+
+async def return_randint():
+    return random.randint(0,9)
+
+async def main_2():
+    # return_randint()
+
+    print(await return_randint())
+
+asyncio.run(main_2())
