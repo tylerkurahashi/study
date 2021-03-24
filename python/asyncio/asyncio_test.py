@@ -11,14 +11,13 @@ async def main():
 asyncio.run(main())
 
 
-# Example of Coroutine object
+# Example of awaiting and printing Coroutine object
 
 async def return_randint():
     return random.randint(0,9)
 
 async def main_2():
     # return_randint()
-
     print(await return_randint())
 
 asyncio.run(main_2())
