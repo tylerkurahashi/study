@@ -1,1 +1,1 @@
-# studyRecordApp
+# study
