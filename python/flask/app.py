@@ -1,6 +1,5 @@
 from flask import Flask
 from pymongo import MongoClient
-import pymongo
 
 app = Flask(__name__)
 client = MongoClient()
