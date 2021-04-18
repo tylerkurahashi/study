@@ -4,10 +4,25 @@
 
 // console.log('setTimeout() was executed.')
 
-const array1 = [0,1,2,3]
-const array2 = array1.map((ele) => {
-    console.log(`Converting ${ele}.`)
-    return ele*10
-})
+// ---
 
-console.log('Conversion of array has completed.',array2)
+// const array1 = [0,1,2,3]
+// const array2 = array1.map((ele) => {
+//     console.log(`Converting ${ele}.`)
+//     return ele*10
+// })
+
+// console.log('Conversion of array has completed.',array2)
+
+// ---
+
+// fs = require('fs')
+
+// fs.readdir('.', (err, files) => {
+//     console.log('Result of fs.readdir()')
+//     console.log('err', err)
+//     console.log('files', files)
+// })
+
+// ---
+
