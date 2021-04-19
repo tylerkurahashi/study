@@ -5,7 +5,6 @@ from tornado.web import RequestHandler
 from tornado.options import define, options, parse_command_line
 
 
-
 class MainHandler(RequestHandler):
     def get(self):
         self.write({'message':'Hello World'})
