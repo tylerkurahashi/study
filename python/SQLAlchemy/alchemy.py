@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy import text
+import pymysql
 
 engine = create_engine("mysql+pymysql://root:mysql@localhost:3306/TESTALCHEMY")
 # engine.connect()
