@@ -1,6 +1,11 @@
+import './code-editor.css';
+import './syntax.css'
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import React from 'react';
 import { useRef } from 'react';
 import Editor, { EditorDidMount } from '@monaco-editor/react';
+import codeShift from 'jscodeshift';
+import Highlighter from 'monaco-jsx-highlighter';
 import prettier from 'prettier';
 import parser from 'prettier/parser-babel';
 
@@ -18,25 +23,46 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
       onChange(getValue());
     });
     editor.getModel()?.updateOptions({ tabSize: 2 });
+
+    const highlighter = new Highlighter(
+      // @ts-ignore
+      window.monaco,
+      codeShift,
+      editor
+    );
+
+    highlighter.highLightOnDidChangeModelContent(
+      () => {},
+      () => {},
+      undefined,
+      () => {},
+    );
   };
 
   const onFormatClick = () => {
     const unformatted = editorRef.current.getModel().getValue();
 
-    const formatted = prettier.format(unformatted, {
-      parser: 'babel',
-      plugins: [parser],
-      useTabs: false,
-      semi: true,
-      singleQuote: true,
-    });
+    const formatted = prettier
+      .format(unformatted, {
+        parser: 'babel',
+        plugins: [parser],
+        useTabs: false,
+        semi: true,
+        singleQuote: true,
+      })
+      .replace(/\n$/, '');
 
     editorRef.current.setValue(formatted);
   };
 
   return (
-    <React.Fragment>
-      <button onClick={onFormatClick}>Format</button>
+    <div className="editor-wrapper">
+      <button
+        className="button button-format is-primary is-small "
+        onClick={onFormatClick}
+      >
+        Format
+      </button>
       <Editor
         editorDidMount={onEditorDidMount}
         theme="dark"
@@ -47,11 +73,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ onChange, initialValue }) => {
           minimap: { enabled: false },
           folding: false,
           lineNumbersMinChars: 3,
-          fontSize: 16,
+          fontSize: 12,
           automaticLayout: true,
         }}
       />
-    </React.Fragment>
+    </div>
   );
 };
 
