@@ -3,7 +3,7 @@ import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { fetchPlugin } from './plugins/fetch-plugin';
 
 let service: esbuild.Service;
-const bundler = async (rawCode: string) => {
+const bundle = async (rawCode: string) => {
   if (!service) {
     service = await esbuild.startService({
       worker: true,
@@ -23,10 +23,16 @@ const bundler = async (rawCode: string) => {
       },
     });
 
-    return { code: result.outputFiles[0].text, err: '' };
+    return {
+      code: result.outputFiles[0].text,
+      err: '',
+    };
   } catch (err) {
-    return { code: '', err: err.message };
+    return {
+      code: '',
+      err: err.message,
+    };
   }
 };
 
-export default bundler;
+export default bundle;
