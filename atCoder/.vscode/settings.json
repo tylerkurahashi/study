@@ -1,0 +1,16 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": null,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
+  },
+  "python.linting.enabled": true,
+  "python.linting.flake8Path": "~/miniforge3/bin/python",
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--ignore=E402, E501, W503"],
+  "python.linting.lintOnSave": true,
+  "python.formatting.provider": "autopep8"
+}
